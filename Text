@@ -9,21 +9,21 @@
 
 #include <stdio.h>
 
-int indexOf (char text[], char target[]) {
+int indexOf (char text[], char target[]) {                     //Создание функции
     
-    int foundIndex;
+    int foundIndex;                                            //Создание переменных
     int textLength = 0;
     int targetLength = 0;
     
-    while (text[textLength] != '\0') {
+    while (text[textLength] != '\0') {                        //Длина текста
         textLength++;
     }
     
-    while (target[targetLength] != '\0') {
+    while (target[targetLength] != '\0') {                    //Длина искомого слова
         targetLength++;
     }
     
-    for (int i = 0; i <= textLength - targetLength; i++) {
+    for (int i = 0; i <= textLength - targetLength; i++) {    //Поиск слова в тексте
         int match = 1;
         for (int j = 0; j < targetLength; j++) {
             if (text[i + j] != target[j]) {
@@ -31,26 +31,26 @@ int indexOf (char text[], char target[]) {
                 break;
             }
         }
-       if ( match == 1) {
+       if ( match == 1) {                                    //Проверка совпадения символов
            foundIndex = i;
            break;
        }
     }
     
-    return foundIndex;
+    return foundIndex;                                      //Возврат индекса
 }
 
 int main() {
-    char text[] = "the cat sat on the mat";
+    char text[] = "the cat sat on the mat";                //Текст и слово(ниже)
     char target[] = "sat";
 
-    int foundIndex = indexOf(text, target);
+    int foundIndex = indexOf(text, target);                //Создание переменной для вызова функции
 
     if (foundIndex >= -1) {
-        printf ("Есть контакт %s", target);
+        printf ("Есть контакт %s на позиции %i", target, foundIndex);        //Вывод при нахождении слова
     }
     else {
-        printf ("Потеряшка %s не найдена", target);
+        printf ("Потеряшка %s не найдена", target);                         //Слово не найдено 
     }
     return 0;
 }
